@@ -1,0 +1,20 @@
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection setting -->
+        <property name = "connection.driver_class">org.h2.Driver</property>
+        <property name = "connection.url">jdbc:h2:./data/giflib</property>
+
+        <!-- SQL dialect -->
+        <property name = "dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Create database schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- Names the annotated entity classes -->
+        <mapping class="com.nivedita.giflib.model.Gif"/>
+
+    </session-factory>
+
+</hibernate-configuration>
