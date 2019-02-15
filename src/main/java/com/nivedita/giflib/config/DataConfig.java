@@ -12,40 +12,36 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
 
-
 @Configuration
 @PropertySource("app.properties")
 public class DataConfig {
-
     @Autowired
     private Environment env;
 
     @Bean
-    public LocalSessionFactoryBean sessionFactoryBean() {
-
+    public LocalSessionFactoryBean sessionFactory() {
         Resource config = new ClassPathResource("hibernate.cfg.xml");
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setConfigLocation(config);
         sessionFactory.setPackagesToScan(env.getProperty("giflib.entity.package"));
         sessionFactory.setDataSource(dataSource());
-
-
         return sessionFactory;
     }
 
     @Bean
     public DataSource dataSource() {
-
         BasicDataSource ds = new BasicDataSource();
 
         // Driver class name
         ds.setDriverClassName(env.getProperty("giflib.db.driver"));
+
         // Set URL
         ds.setUrl(env.getProperty("giflib.db.url"));
-        // Set username and password
+
+        // Set username & password
         ds.setUsername(env.getProperty("giflib.db.username"));
         ds.setPassword(env.getProperty("giflib.db.password"));
+
         return ds;
     }
-
 }

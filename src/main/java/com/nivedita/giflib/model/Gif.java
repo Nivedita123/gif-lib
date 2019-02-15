@@ -1,35 +1,21 @@
 package com.nivedita.giflib.model;
 
-import org.springframework.stereotype.Component;
-
-import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-@Entity
 public class Gif {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Lob
     private byte[] bytes;
     private String description;
-
-    @ManyToOne
     private Category category;
     private LocalDateTime dateUploaded = LocalDateTime.now();
     private String username = "You";
     private boolean favorite;
     private String hash;
 
-    // Default Constructor
-    public Gif() {}
+    public Gif(){}
 
     public String getTimeSinceUploaded() {
-
         String unit = "";
         LocalDateTime now = LocalDateTime.now();
         long diff;
@@ -113,4 +99,3 @@ public class Gif {
         this.hash = hash;
     }
 }
-
