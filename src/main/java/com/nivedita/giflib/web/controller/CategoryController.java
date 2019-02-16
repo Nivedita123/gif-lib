@@ -43,6 +43,7 @@ public class CategoryController {
 
         // TODO: Redirect browser to /categories
 
+
         return null;
     }
 
